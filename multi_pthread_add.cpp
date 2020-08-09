@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <time.h>
+#include <thread>
 
 #define ARR_SIZE 800000
 #define NUM_PTHREAD 16
@@ -20,7 +21,14 @@ void* multiThreadSum(void* tid) {
     pthread_exit(nullptr);
 }
 
+void sayHello(int i) {
+    std::cout << "Hello std::thread!" << std::endl;
+}
+
 int main(int argc, char** argv) {
+    std::thread t(sayHello, 7);
+    std::cout << "max thread at this computer: " << t.hardware_concurrency << std::endl;
+
     clock_t start, end;
     for (int i = 0; i < ARR_SIZE; i++) {
         array_random[i] = rand() % 20;

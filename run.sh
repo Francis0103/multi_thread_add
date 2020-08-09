@@ -1,1 +1,1 @@
-g++ multi_pthread_add.cpp -lpthread -o multi_pthread_add
+g++ multi_pthread_add.cpp -std=c++11 -lpthread -o multi_pthread_add
